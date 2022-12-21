@@ -28,7 +28,14 @@ const DB = {
   ],
 };
 
-function findName(id) {
+
+
+
+
+
+function findUserById(id) {
+  if(!DB.users[id-1]){ return 'Not Found' }
+
   let user = {};
   
   let users = DB.users;
@@ -46,26 +53,52 @@ function findName(id) {
     }
   });
 
-
+  
   level.forEach((item) => {
     if ((item.id = pos)) {
       user.position = item.name;
-    }
+    };
+  });
+user.skills = [];
+  userSkills.forEach(item => {
+    
+      skills.forEach(value => {
+          if(item == value.id) {
+              user.skills.push(value.name)
+              
+          };
+
+        });
     });
 
-    user.skills = [];
-    userSkills.forEach(item => {
-
-        skills.forEach(value =>{
-            if(item== value.id){
-                user.skills.push(value.name)
-            }
-
-        })
-    })
-
   
-  console.log(user);
+  return user;
 }
 
-findName(1);
+
+
+// const oleg = findUserById(2)
+// console.log(oleg)
+// // /*
+// // {
+// // 	name: 'Oleg',
+// // 	position: 'junior',
+// // 	skills: ['html/css', 'js'],
+// // }
+// // */
+
+// const andriy = findUserById(1)
+// console.log(andriy)
+// // /*
+// {
+//     name: 'Andriy Petrash',
+// 	  position: 'senior',
+// 	  skills: ['html/css', 'js', 'nodejs', 'react', 'TypeScript'],
+// }
+// */
+
+// const notFoundUser = findUserById('33')
+// console.log(notFoundUser)
+// /*
+// "Not Found"
+// */
